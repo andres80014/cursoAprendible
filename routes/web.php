@@ -14,6 +14,7 @@
 Route::get('/',['as' => 'home', 'uses' => 'PagesController@home']);
 
 Route::get('contacto',['as' => 'contacto', 'uses' => 'PagesController@contacto']);
+Route::post('contacto','PagesController@mensajes');
 
 Route::get('saludos/{nombre?}',['as'=>'saludos','uses'=>'PagesController@saludo']);
 

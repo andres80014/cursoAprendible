@@ -24,4 +24,13 @@ class PagesController extends Controller
         $html = "<h2> contenido HTML</h2>";
         return view('saludo',compact('html','consolas','nombre'));
     }
+
+    public function mensajes(Request $request){
+        $this->validate($request,[
+            'nombre' =>'required',
+            'email'  =>'email|required',
+            'mensaje' =>'min:5'
+        ]);
+        return $request->all();
+    }
 }
