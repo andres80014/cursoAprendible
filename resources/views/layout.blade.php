@@ -8,6 +8,10 @@
             text-decoration: none;
             color: green;
         }
+        .error{
+            color:red;
+            font-size: 12;
+        }
     </style>
     <title>Mi sitio</title>
 </head>
@@ -17,11 +21,11 @@
     <?php function activeMenu($url){
         return  request()->is('/') ? 'active' : '';
     }?>
-    <h1>{{ request()->is('/') ? 'Ests en el Home ' : 'No estas en el Home'}}</h1>
+
     <nav>
         <a href="{{ route('home') }}" class="{{ activeMenu('/') }}">Inicio</a>
         <a href="{{ route('saludos','andres') }} " class="{{ activeMenu('saludos/*') }}">Saludo</a>
-        <a href="{{ route('contacto') }} " class="{{ activeMenu('contacto') }}">Contacto</a>
+        <a href="{{ route('messages.create') }} " class="{{ activeMenu('messages/create') }}">Contacto</a>
     </nav>
 </header>
 @yield('contenido')

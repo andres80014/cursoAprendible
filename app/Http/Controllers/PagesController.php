@@ -1,13 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use \App\Http\Requests\CreateMessageRequest;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('example',['only' => ['home']] );
+    }
+
     public function home(){
             return view('home');
+        //return response('costenido e la respuesta',200);
     }
 
 
@@ -25,12 +33,10 @@ class PagesController extends Controller
         return view('saludo',compact('html','consolas','nombre'));
     }
 
-    public function mensajes(Request $request){
-        $this->validate($request,[
-            'nombre' =>'required',
-            'email'  =>'email|required',
-            'mensaje' =>'min:5'
-        ]);
-        return $request->all();
+    public function mensajes(CreateMessageRequest $request){
+
+        $data =  $request->all();
+        //return \response()->json(['data' => $data],200 );
+        return redirect('contacto')->with('info','Tu mensaje a sido envidado');
     }
 }

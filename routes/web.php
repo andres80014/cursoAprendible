@@ -13,11 +13,17 @@
 
 Route::get('/',['as' => 'home', 'uses' => 'PagesController@home']);
 
+
 Route::get('contacto',['as' => 'contacto', 'uses' => 'PagesController@contacto']);
 Route::post('contacto','PagesController@mensajes');
 
 Route::get('saludos/{nombre?}',['as'=>'saludos','uses'=>'PagesController@saludo']);
 
+
+Route::get('messages/create',['as' => 'messages.create','uses'=>'MessagesController@create']);
+Route::post('messages',['as' => 'messages.store','uses'=>'MessagesController@store']);
+Route::get('messages',['as' => 'messages.index','uses'=>'MessagesController@index']);
+Route::get('messages/{id}',['as' => 'messages.show','uses'=>'MessagesController@show']);
 
 /*
 
